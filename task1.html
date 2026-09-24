@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Task 0 — JS Refresher · Task 1: Variables &amp; Data Types</title>
+<style>
+  :root{
+    --bg: #14181f;
+    --panel: #1b212b;
+    --panel-line: #2a3240;
+    --ink: #e7ebf0;
+    --ink-dim: #8b96a6;
+    --gold: #d9a441;
+    --teal: #4fb8a6;
+    --mono: "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    --sans: "Source Sans 3", "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.55;
+  }
+
+  header{
+    padding: 48px 24px 28px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  header .kicker{
+    font-family: var(--mono);
+    color: var(--teal);
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+  }
+
+  header h1{
+    font-size: 2rem;
+    margin: 10px 0 6px;
+    font-weight: 650;
+  }
+
+  header p{
+    color: var(--ink-dim);
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  main{
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  section.block{
+    background: var(--panel);
+    border: 1px solid var(--panel-line);
+    border-radius: 10px;
+    padding: 28px 30px;
+    margin-bottom: 26px;
+  }
+
+  section.block h2{
+    font-size: 1.15rem;
+    margin: 0 0 16px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .sub{
+    font-size: 0.95rem;
+    color: var(--ink-dim);
+    margin: 18px 0 8px;
+  }
+
+  pre{
+    background: #0f1319;
+    border: 1px solid var(--panel-line);
+    border-radius: 8px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0 0 4px;
+  }
+
+  code{ font-family: var(--mono); }
+
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    margin-top: 4px;
+  }
+
+  th, td{
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--panel-line);
+  }
+
+  th{ color: var(--ink-dim); font-weight: 500; }
+
+  .sentence{
+    font-family: var(--sans);
+    font-style: italic;
+    color: var(--ink);
+    border-left: 3px solid var(--teal);
+    padding-left: 14px;
+    margin-top: 4px;
+  }
+
+  .qa dt{
+    color: var(--teal);
+    font-weight: 600;
+    margin-top: 14px;
+  }
+  .qa dd{
+    margin: 4px 0 0;
+    color: var(--ink);
+  }
+
+  .tag{
+    display:inline-block;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-left: 8px;
+  }
+  .tag.primitive{ background: rgba(79,184,166,0.15); color: var(--teal); }
+  .tag.reference{ background: rgba(217,164,65,0.15); color: var(--gold); }
+
+  footer{
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    color: var(--ink-dim);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Task 0 — JavaScript Refresher</div>
+  <h1>Task 1: Variables &amp; Data Types</h1>
+  <p>All output below is generated live in the browser by the script at the bottom of this file — open the console too, since every value is also logged there.</p>
+</header>
+
+<main>
+
+  <section class="block">
+    <h2>1. Student variables</h2>
+    <pre><code>const name = "Aidana Shynbulatova";
+const age = 20;
+const isActive = true;
+const courses = ["React (Fall 2026)", "Information Systems Design", "Databases"];
+const address = { city: "Almaty", university: "KBTU" };
+
+let middleName = null;      // known to be empty on purpose
+let graduationYear;         // not assigned yet -> undefined</code></pre>
+
+    <div class="sub">Values and their types</div>
+    <table id="typesTable"></table>
+
+    <div class="sub">Template literal</div>
+    <div class="sentence" id="sentenceOut"></div>
+  </section>
+
+  <section class="block">
+    <h2>2. Primitive vs. reference</h2>
+    <p style="color:var(--ink-dim); margin:0 0 4px;">
+      A <strong style="color:var(--ink)">primitive</strong> holds its value directly; copying it copies the value.
+      A <strong style="color:var(--ink)">reference</strong> (object/array/function) holds a pointer to the value in memory; copying it copies the pointer, not the contents.
+    </div>
+    <table>
+      <tr><th>Variable</th><th>Kind</th></tr>
+      <tr><td>name</td><td><span class="tag primitive">primitive — string</span></td></tr>
+      <tr><td>age</td><td><span class="tag primitive">primitive — number</span></td></tr>
+      <tr><td>isActive</td><td><span class="tag primitive">primitive — boolean</span></td></tr>
+      <tr><td>courses</td><td><span class="tag reference">reference — array (object)</span></td></tr>
+      <tr><td>address</td><td><span class="tag reference">reference — object</span></td></tr>
+    </table>
+  </section>
+
+  <section class="block">
+    <h2>Short answers</h2>
+    <dl class="qa">
+      <dt>What is the difference between <code>let</code> and <code>const</code>?</dt>
+      <dd>Both are block-scoped. <code>let</code> can be reassigned later; <code>const</code> can't be reassigned after its initial value is set. <code>const</code> doesn't make objects immutable — you still can't reassign the variable itself, but you can still change properties inside an object it points to.</dd>
+
+      <dt>What does <code>typeof null</code> return?</dt>
+      <dd id="typeofNullOut"></dd>
+      <dd style="color:var(--ink-dim); font-size:0.9rem;">This is a long-standing bug in JavaScript kept for backward compatibility — <code>null</code> is not actually an object.</dd>
+
+      <dt>What are JavaScript's primitive types?</dt>
+      <dd>string, number, boolean, undefined, null, symbol, and bigint. Everything else (objects, arrays, functions) is a reference type.</dd>
+    </dl>
+  </section>
+
+  <section class="block">
+    <h2>My notes</h2>
+    <p style="margin:0; color:var(--ink-dim);">
+      The trickiest part to remember is that <code>typeof null === "object"</code> — it looks like it should return <code>"null"</code>. Also worth noting: <code>undefined</code> means a variable was declared but never given a value, while <code>null</code> is an explicit "this is intentionally empty" from the developer.
+    </p>
+  </section>
+
+</main>
+
+<footer>Task 1 of 11 · generated for the Task 0 JS refresher bonus assignment</footer>
+
+<script>
+  // ---- 1. Variables and Data Types ----
+  const name = "Aidana Shynbulatova";
+  const age = 20;
+  const isActive = true;
+  const courses = ["React (Fall 2026)", "Information Systems Design", "Databases"];
+  const address = { city: "Almaty", university: "KBTU" };
+
+  let middleName = null;
+  let graduationYear;
+
+  const values = {
+    name, age, isActive, courses, address, middleName, graduationYear
+  };
+
+  console.log("---- Task 1: Variables & Data Types ----");
+  for (const [key, val] of Object.entries(values)) {
+    console.log(key, "=", val, "| type:", typeof val);
+  }
+
+  // Render values/types table
+  const table = document.getElementById("typesTable");
+  const rows = [
+    ["name", JSON.stringify(name), typeof name],
+    ["age", age, typeof age],
+    ["isActive", isActive, typeof isActive],
+    ["courses", JSON.stringify(courses), typeof courses + " (array)"],
+    ["address", JSON.stringify(address), typeof address],
+    ["middleName", String(middleName), typeof middleName],
+    ["graduationYear", String(graduationYear), typeof graduationYear],
+  ];
+  table.innerHTML =
+    "<tr><th>Variable</th><th>Value</th><th>typeof</th></tr>" +
+    rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("");
+
+  // Template literal sentence
+  const sentence = `${name}, age ${age}, is ${isActive ? "currently active" : "not active"} and enrolled in ${courses.length} courses (lives in ${address.city}).`;
+  document.getElementById("sentenceOut").textContent = sentence;
+  console.log("Sentence:", sentence);
+
+  // typeof null
+  document.getElementById("typeofNullOut").textContent = `typeof null === "${typeof null}"`;
+  console.log("typeof null =", typeof null);
+</script>
+
+</body>
+</html>

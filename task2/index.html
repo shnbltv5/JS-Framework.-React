@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Async JS Task Runner — Aidana Shynbulatova</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="kicker">React F26 · Homework — JavaScript Runtime and Async</div>
+  <h1>Async Task Runner</h1>
+  <p>A small closure-based task runner built with plain HTML, CSS and JavaScript to demonstrate the call stack, promises, async/await and the event loop.</p>
+</header>
+
+<main>
+
+  <section class="block">
+    <h2>1 · Tasks (closures)</h2>
+    <p class="hint">Each task is created with <code>createTask(name)</code>. The run counter is stored in a variable closed over inside the factory function — it can only be read through <code>getCount()</code>, never touched directly, so each task's counter is fully private and independent from the others.</p>
+
+    <div class="tasks-grid" id="tasksGrid"></div>
+
+    <div class="controls">
+      <button id="runAllBtn" class="primary">Run All Tasks</button>
+      <button id="resetAllBtn" class="ghost">Reset All</button>
+    </div>
+    <p class="all-status" id="allStatus"></p>
+  </section>
+
+  <section class="block">
+    <h2>2 · Sequential vs. Concurrent</h2>
+    <p class="hint">Same three simulated loads (700ms, 900ms, 600ms). Sequential awaits each one before starting the next; concurrent starts all three at once with <code>Promise.all</code>.</p>
+    <div class="controls">
+      <button id="runSeqBtn" class="secondary">Run Sequential</button>
+      <button id="runConcBtn" class="secondary">Run Concurrent</button>
+      <button id="clearCompareBtn" class="ghost">Clear</button>
+    </div>
+    <div id="compareResults" class="compare-results"></div>
+  </section>
+
+  <section class="block">
+    <h2>3 · Event Loop Demo</h2>
+    <p class="hint">Contains 2 timers, 2 promise callbacks and 1 async function. Prediction written before running it — press the button to see the real order.</p>
+    <div class="controls">
+      <button id="runEventLoopBtn" class="secondary">Run Event Loop Demo</button>
+      <button id="clearLoopBtn" class="ghost">Clear</button>
+    </div>
+
+    <div class="loop-columns">
+      <div>
+        <h3>Predicted output</h3>
+        <pre id="predictedOutput"></pre>
+      </div>
+      <div>
+        <h3>Actual output</h3>
+        <pre id="actualOutput">Press "Run Event Loop Demo" to see the real order.</pre>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Async JS Task Runner · built for Homework — JavaScript Runtime and Async</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

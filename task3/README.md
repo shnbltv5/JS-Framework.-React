@@ -90,17 +90,12 @@ try:
   surface side-effect bugs. It does **not** happen in the production build
   (`npm run build` / the deployed site), so what the grader sees live on
   GitHub Pages will log once per real render.
-- Edit one quest's status: `App`, `Header`, `Controls`, and `QuestList` all
-  log again — none of them are memoized, so a parent re-render always calls
-  them. But out of the 5 `QuestCard`s, **only the edited one** logs.
-  `QuestCard` is the one component wrapped in `memo()`, and `App`'s
-  `changeStatus` creates a new object only for the edited quest — every
-  other quest object in the array keeps the exact same reference, so
-  memo's shallow prop comparison says "nothing changed here" for the
-  untouched cards and React skips calling their function bodies entirely.
-  This is the clearest way to show the difference memo actually makes: turn
-  it off (remove `memo(...)` in `QuestCard.jsx`) and all 5 cards will log
-  on every edit instead of just 1.
+- Edit one quest's status: `App` re-renders because its `quests` state
+  changed, and every component below it in the tree (`Header`, `Controls`,
+  `QuestList`, and **all** `QuestCard`s) re-renders too and logs again. This
+  is normal React behavior: when a parent re-renders, every child function
+  component is called again by default, whether or not that particular
+  child's own props actually changed.
 - Type in the "Post Quest" form: only `Controls` logs, because the form's
   text lives in `Controls`'s own local state — it never touches `App`'s
   state (and doesn't trigger a re-render of `App` or anything below it)

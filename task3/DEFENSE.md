@@ -106,21 +106,3 @@ key) never changes even though the item's position does.
   subtree's state in one move — changing the key is a deliberate signal to
   React that this should be treated as a fresh instance, not an update to
   the old one."
-
-## Anticipate this follow-up question
-
-**"Why does `memo()` matter here, and how does it relate to reconciliation
-and identity?"**
-
-Say: "`QuestCard` is wrapped in `memo()`. When I edit one quest's status,
-`App`'s `changeStatus` uses `.map()` in a way that only creates a *new*
-object for the edited quest — every other quest object in the array keeps
-the exact same reference it had before. `memo()` does a shallow comparison
-of props between renders; for the 4 untouched cards, `quest` is the same
-reference and the callbacks are the same reference (they're wrapped in
-`useCallback`), so `memo()` sees 'nothing changed' and skips calling that
-component function entirely — you can see this because only the edited
-card's `console.log` fires, not all 5. Reconciliation still *walks* the
-tree to check, but `memo()` lets React skip the expensive part — actually
-re-running the component and diffing its output — when it can already
-tell from props alone that the result would be identical."

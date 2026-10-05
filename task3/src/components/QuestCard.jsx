@@ -1,10 +1,10 @@
-import { useState, memo } from "react";
+import { useState } from "react";
 
 const MAX_CONDITION = 100;
 const STEP = 15;
 const EXHAUSTED_THRESHOLD = 25;
 
-function QuestCard({ quest, onStatusChange, onRemove }) {
+export default function QuestCard({ quest, onStatusChange, onRemove }) {
   console.log("[render] QuestCard:", quest.title);
 
   // Local state, private to THIS card instance. Two different quests never
@@ -94,8 +94,3 @@ function QuestCard({ quest, onStatusChange, onRemove }) {
   );
 }
 
-// memo() means this card only re-renders when ITS OWN props actually change
-// (a new `quest` object, or a different callback reference). Editing quest
-// A's status creates a new object only for A, so B and C's QuestCard calls
-// are skipped — check the console when you change one card's status.
-export default memo(QuestCard);

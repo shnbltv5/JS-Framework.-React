@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import Header from "./components/Header.jsx";
 import Controls from "./components/Controls.jsx";
 import QuestList from "./components/QuestList.jsx";
@@ -14,26 +14,25 @@ export default function App() {
   const [keyMode, setKeyMode] = useState("id"); // "id" (safe) | "index" (bug demo)
   const [season, setSeason] = useState(0);
 
-  // useCallback + functional updates (prev => ...) mean these functions
-  // never need `quests` in a dependency array and their reference never
-  // changes across renders. That matters for QuestCard's memo() to be able
-  // to skip re-rendering cards whose props truly didn't change.
-  const addQuest = useCallback((data) => {
+  // Plain functions using functional updates (prev => ...), so they always
+  // work off the latest state without needing `quests` read directly here.
+  function addQuest(data) {
     setQuests((prev) => [...prev, { id: makeId(), status: "Active", ...data }]);
-  }, []);
+  }
 
-  const removeQuest = useCallback((id) => {
+  function removeQuest(id) {
     setQuests((prev) => prev.filter((q) => q.id !== id));
-  }, []);
+  }
 
-  const changeStatus = useCallback((id, status) => {
+  function changeStatus(id, status) {
     // Only the matching quest gets a new object reference; every other
-    // quest object in the array is untouched, so QuestCard's memo() bails
-    // out for all the cards that weren't edited.
+    // quest object in the array is left untouched.
     setQuests((prev) => prev.map((q) => (q.id === id ? { ...q, status } : q)));
-  }, []);
+  }
 
-  const startNewSeason = useCallback(() => setSeason((s) => s + 1), []);
+  function startNewSeason() {
+    setSeason((s) => s + 1);
+  }
 
   // Derived data — never stored in state, recomputed each render from
   // `quests`, `filterStatus`, `sortBy`, `reversed`.

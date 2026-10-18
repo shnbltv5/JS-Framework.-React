@@ -3,7 +3,7 @@
 A React single page application for browsing, searching and posting fantasy guild quests.
 Midterm project for the React course (individual).
 
-- **Deployed app:** _paste the public link here_
+- **Deployed app:** https://shnbltv5.github.io/JS-Framework.-React/midterm/
 - **Stack:** React 18, Vite, plain CSS (no other libraries)
 
 ## Features

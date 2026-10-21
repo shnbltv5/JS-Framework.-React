@@ -1,0 +1,73 @@
+// Seed data, written to localStorage the first time the app runs.
+export const initialData = [
+  {
+    id: 1,
+    title: "Clear the Whispering Cellar",
+    hero: "Aidana the Swift",
+    difficulty: "Easy",
+    reward: 50,
+    status: "Active",
+    location: "Old Tavern Cellar",
+    deadline: "2026-11-05",
+    description:
+      "Rats the size of cats have taken the tavern's cellar. The innkeeper is offering ale for life.",
+    createdAt: "2026-10-01T09:00:00.000Z",
+    completedAt: null,
+  },
+  {
+    id: 2,
+    title: "Escort the Merchant Caravan",
+    hero: "Bek the Bold",
+    difficulty: "Medium",
+    reward: 120,
+    status: "Active",
+    location: "Eastern Road",
+    deadline: "2026-11-12",
+    description:
+      "Bandits have been spotted on the eastern road. The caravan leaves at dawn, with or without an escort.",
+    createdAt: "2026-10-02T10:30:00.000Z",
+    completedAt: null,
+  },
+  {
+    id: 3,
+    title: "Slay the Frost Wyrm",
+    hero: "Dana Ironshield",
+    difficulty: "Hard",
+    reward: 400,
+    status: "Active",
+    location: "Glacier Peak",
+    deadline: "2026-12-01",
+    description:
+      "The wyrm has slept under the glacier for a century. Something woke it up.",
+    createdAt: "2026-10-03T12:15:00.000Z",
+    completedAt: null,
+  },
+  {
+    id: 4,
+    title: "Recover the Lost Scrolls",
+    hero: "Aidana the Swift",
+    difficulty: "Medium",
+    reward: 90,
+    status: "Completed",
+    location: "The Old Library",
+    deadline: "2026-10-20",
+    description:
+      "Three scrolls, scattered across the old library after the fire. All of them have now been found.",
+    createdAt: "2026-09-25T08:00:00.000Z",
+    completedAt: "2026-10-18T16:45:00.000Z",
+  },
+  {
+    id: 5,
+    title: "Negotiate with the River Spirits",
+    hero: "Nurlan the Quiet",
+    difficulty: "Hard",
+    reward: 250,
+    status: "Active",
+    location: "The Lower Fields",
+    deadline: "2026-11-20",
+    description:
+      "The spirits flooded the lower fields last spring. They want something in return for peace.",
+    createdAt: "2026-10-04T14:00:00.000Z",
+    completedAt: null,
+  },
+];

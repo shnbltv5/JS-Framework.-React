@@ -30,6 +30,12 @@ export default function About() {
           React Router: separate pages, nested routes, URL parameters and lazy loading.
         </p>
         <p className="about-author">Made by Aidana Shynbulatova · React course, Fall 2026</p>
+        <p>
+          More about me:{" "}
+          <a href="https://shnbltv5.github.io/JS-Framework.-React/" target="_blank" rel="noreferrer">
+            my About Me page
+          </a>
+        </p>
       </div>
 
       <div className="about-grid">

@@ -13,6 +13,17 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%E2%9A%94%3C/text%3E%3C/svg%3E" />
   </head>
   <body>
+    <script>
+      // GitHub Pages has no server routing: a direct link like /task5/quests/12 opens 404.html,
+      // which sends the browser here as /task5/?route=/quests/12. Put the real path back
+      // before React starts, so the router sees /quests/12.
+      (function () {
+        var route = new URLSearchParams(window.location.search).get("route");
+        if (route !== null) {
+          window.history.replaceState(null, "", "/JS-Framework.-React/task5" + route);
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

@@ -3,7 +3,7 @@
 A React single page application for browsing, searching and posting fantasy guild quests.
 My midterm project, extended with **React Router**: pages, nested routes, URL parameters and lazy loading.
 
-- **Deployed app:** _add your Vercel URL here_
+- **Deployed app:** https://shnbltv5.github.io/JS-Framework.-React/task5/
 - **Stack:** React 18, React Router, Vite, plain CSS
 
 ## Routes
@@ -63,7 +63,19 @@ npm install
 npm run dev
 ```
 
-## Deploy
+## Deploy (GitHub Pages, folder `task5` of the repo)
 
-Vercel: import the repository → Framework preset **Vite** → Deploy.
-`vercel.json` sends every path to `index.html`, so `/quests/12` works on refresh and as a direct link.
+Automatic: every push to `main` that changes `task5/` runs `.github/workflows/deploy-task5.yml`,
+which builds the app and publishes it to the `task5/` folder of the `gh-pages` branch.
+
+Manual alternative:
+
+```bash
+npm run deploy
+```
+
+`vite.config.js` sets `base: "/JS-Framework.-React/task5/"` and `BrowserRouter` gets the same `basename`.
+GitHub Pages has no server-side routing, so `gh-pages-root/404.html` (published to the root of `gh-pages`)
+sends direct links like `/task5/quests/12` back to the app as `/task5/?route=/quests/12`,
+and a small script in `index.html` restores the real URL before React starts.
+Direct links, refresh and Back / Forward all work.

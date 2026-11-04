@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found</title>
+    <script>
+      // Deep links of the task5 app (React Router) are sent back to the app.
+      // Example: /JS-Framework.-React/task5/quests/12 -> /JS-Framework.-React/task5/?route=/quests/12
+      (function () {
+        var base = "/JS-Framework.-React/task5";
+        var path = window.location.pathname;
+        if (path.indexOf(base + "/") === 0) {
+          var route = path.slice(base.length) + window.location.search + window.location.hash;
+          window.location.replace(base + "/?route=" + encodeURIComponent(route));
+        }
+      })();
+    </script>
+    <style>
+      body { font-family: system-ui, sans-serif; background: #241811; color: #f3e6c8; text-align: center; padding: 80px 16px; }
+      a { color: #c9973b; }
+    </style>
+  </head>
+  <body>
+    <h1>404</h1>
+    <p>This page does not exist.</p>
+    <p><a href="/JS-Framework.-React/">Go to the main page</a></p>
+  </body>
+</html>

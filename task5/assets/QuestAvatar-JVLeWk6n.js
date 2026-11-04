@@ -1,0 +1,1 @@
+import{j as r}from"./index-CLat2Elh.js";import{a as s,f as e}from"./DifficultyStars-C9Vr7Vy5.js";function i({status:a}){return r.jsx("span",{className:`badge badge-${a}`,children:s[a]})}function o({id:a}){return r.jsx("span",{className:"quest-avatar","aria-hidden":"true",children:e(a)})}export{o as Q,i as S};

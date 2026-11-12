@@ -5,7 +5,7 @@ Task 5 (React Router) extended with **Firebase Authentication**, **environment v
 and a **cache for server data**. Everything from Task 5 still works: all routes, search,
 filters, sorting, pagination, quest details, status changes, posting a quest and the dashboard.
 
-- **Deployed app:** _add your Vercel URL here_
+- **Deployed app:** https://js-framework-react-task6-iota.vercel.app
 - **Stack:** React 18, React Router, Firebase Authentication, Vite, plain CSS
 
 ## Routes

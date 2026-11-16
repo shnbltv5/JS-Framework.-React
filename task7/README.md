@@ -6,7 +6,7 @@ Everything from Task 6 still works: all routes, Firebase Authentication, protect
 search, filters, sorting, pagination, quest details, status changes, posting a quest,
 the dashboard and the in-memory cache.
 
-- **Deployed app:** _add the Vercel link here_
+- **Deployed app:** https://js-framework-react-1hic.vercel.app
 - **Stack:** React 18, React Router, Firebase Authentication, Vite, plain CSS, a hand-written service worker
 - **Public API:** [D&D 5e API](https://www.dnd5eapi.co) for the Bestiary pages
 

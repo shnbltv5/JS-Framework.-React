@@ -6,7 +6,7 @@ all routes, Firebase Authentication, protected pages, search (now with **debounc
 pagination in the URL, quest details, posting a quest, status changes, the dashboard, the Bestiary (public API),
 the installable PWA, the service worker and offline mode.
 
-- **Deployed app:** _add the Vercel link here_
+- **Deployed app:** https://js-framework-react-8klu.vercel.app
 - **Stack:** React 18, **Redux Toolkit + React Redux**, React Router, Firebase Authentication, Vite, plain CSS,
   a hand-written service worker
 - **Public API:** [D&D 5e API](https://www.dnd5eapi.co) for the Bestiary pages

@@ -1,0 +1,135 @@
+/* ---- Task 7: PWA (network status, update prompt, offline data) and mobile layout ---- */
+
+/* ---- header tools: online/offline indicator + menu button ---- */
+.header-tools { display: flex; align-items: center; gap: 8px; }
+.network-status {
+  display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  padding: 4px 10px; border-radius: 100px; font-size: 0.78rem; font-weight: 600;
+  border: 1px solid rgba(111, 140, 95, 0.6); color: #b9d3aa;
+}
+.network-dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.network-status.is-offline { border-color: var(--rust); color: #f0a08c; }
+
+.nav-toggle {
+  display: none; align-items: center; gap: 6px;
+  min-height: 44px; min-width: 44px; padding: 8px 12px; border-radius: 8px;
+  background: transparent; color: var(--parchment); font-size: 0.95rem; font-weight: 600;
+  border: 1px solid rgba(201, 151, 59, 0.5);
+}
+.nav-toggle:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* ---- offline banner and "saved data" notice ---- */
+.offline-banner {
+  margin-bottom: 18px; padding: 10px 14px; border-radius: 8px; font-size: 0.9rem;
+  background: rgba(184, 69, 47, 0.18); border: 1px solid var(--rust); color: var(--parchment);
+}
+.cached-notice {
+  padding: 10px 14px; border-radius: 8px; font-size: 0.88rem; margin-bottom: 14px;
+  background: rgba(201, 151, 59, 0.16); border: 1px dashed var(--gold);
+}
+.detail .cached-notice { margin-bottom: 0; color: var(--ink); }
+
+.status-message .form-actions { justify-content: center; }
+
+/* ---- update prompt (new version of the service worker) ---- */
+.update-prompt {
+  position: fixed; z-index: 50; left: 16px; right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  max-width: 480px; margin: 0 auto; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 10px;
+  background: var(--parchment); color: var(--ink); border-radius: 10px;
+  border-top: 4px solid var(--gold); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+}
+.update-prompt .btn-ghost { color: var(--ink); }
+.update-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ---- bestiary ---- */
+.toolbar .muted { font-size: 0.88rem; }
+.monster-grid { list-style: none; margin: 0; padding: 0; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 12px; }
+.monster-grid > li { display: flex; } /* all cards in a row have the same height */
+.monster-card {
+  flex: 1; flex-direction: row; align-items: center; gap: 12px; min-height: 64px;
+  padding: 12px 16px; text-decoration: none; border-top-color: var(--rust);
+  transition: transform 0.15s;
+}
+.monster-card:hover { transform: translateY(-2px); filter: none; }
+.monster-letter {
+  flex-shrink: 0; width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-weight: 700; background: var(--wood-mid); color: var(--gold);
+}
+.monster-name { flex: 1; font-weight: 600; overflow-wrap: anywhere; }
+.monster-open { color: var(--rust); font-weight: 700; }
+
+.monster-detail h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.ability-table { width: 100%; border-collapse: collapse; table-layout: fixed; text-align: center; }
+.ability-table th { font-size: 0.75rem; color: var(--ink-soft); padding: 6px 2px; }
+.ability-table td { font-weight: 600; padding: 6px 2px; border-top: 1px solid rgba(58, 42, 26, 0.2); }
+.ability-table td span { display: block; font-weight: 400; font-size: 0.8rem; color: var(--ink-soft); }
+.monster-traits { display: flex; flex-direction: column; gap: 6px; margin: 0; font-size: 0.92rem; }
+.monster-traits dt { display: inline; font-weight: 700; }
+.monster-traits dt::after { content: ": "; }
+.monster-traits dd { display: inline; margin: 0; }
+.monster-section { display: flex; flex-direction: column; gap: 8px; font-size: 0.92rem; }
+
+/* long words (ids, emails, URLs) never push the page wider than the screen */
+h1, h2, h3, p, dd, td { overflow-wrap: anywhere; }
+
+/* ---- touch screens: every control is at least 44px high ---- */
+@media (pointer: coarse), (max-width: 720px) {
+  .btn, .nav-link { min-height: 44px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; }
+  .btn-small { min-height: 40px; }
+  .field input, .field select, .field textarea { min-height: 44px; font-size: 16px; } /* 16px: iOS does not zoom */
+}
+
+/* ---- tablets and phones: navigation becomes a drop-down menu ---- */
+@media (max-width: 720px) {
+  .nav-toggle { display: inline-flex; }
+  .nav {
+    display: none; flex-direction: column; gap: 4px; padding: 8px;
+    background: rgba(0, 0, 0, 0.28); border: 1px solid rgba(201, 151, 59, 0.3); border-radius: 10px;
+  }
+  .nav.is-open { display: flex; }
+  .nav-link { display: flex; align-items: center; padding: 10px 14px; border-radius: 8px; font-size: 1rem; }
+  .board-title h1 { font-size: 1.5rem; }
+  .board-tagline { font-size: 0.82rem; }
+  .toolbar { flex-wrap: wrap; }
+}
+
+/* phone held sideways: the menu uses columns, so it is not taller than the screen */
+@media (max-width: 720px) and (orientation: landscape) {
+  .nav.is-open { display: grid; grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---- phones ---- */
+@media (max-width: 560px) {
+  .board-header { padding-bottom: 14px; margin-bottom: 18px; }
+  .filters, .form, .box { padding: 14px; }
+  .card, .detail { padding: 16px 14px 12px; }
+  .detail .card-head { align-items: flex-start; }
+  .card-head h2 { font-size: 1.3rem; }
+  .form-actions .btn { flex: 1 1 auto; }
+  .stat strong { font-size: 1.25rem; }
+  .update-actions .btn { flex: 1; }
+  /* pagination: only Previous, the current page and Next */
+  .pagination .page-btn:not(.is-current):not(:first-child):not(:last-child) { display: none; }
+  .pagination .page-btn { flex: 1; max-width: 140px; }
+}
+
+/* ---- small phones (320–400px) ---- */
+@media (max-width: 400px) {
+  .app { padding: 16px 12px 40px; }
+  .board-title { gap: 8px; }
+  .board-emblem { font-size: 1.6rem; }
+  .board-title h1 { font-size: 1.2rem; }
+  .board-tagline { display: none; }
+  .nav-toggle-text { display: none; }
+  .network-status { padding: 4px 8px; }
+  .hero-text h2 { font-size: 1.3rem; }
+}
+
+/* dashboard numbers: two per row on phones instead of one long column */
+@media (max-width: 560px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+}

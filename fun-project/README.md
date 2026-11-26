@@ -1,10 +1,44 @@
 # Whisker Café 🐾
 
 A cozy idle game about running a café full of cats with big personalities.
-Made with React for the "create something fun" assignment.
+Bonus Task "AI only project": the whole application was generated with AI (Claude).
 
 - **Play:** https://js-framework-react-ujz8.vercel.app
 - **Stack:** React 18, Redux Toolkit, React Router, Vite, plain CSS. All cats are drawn with SVG, all sounds are made with the Web Audio API (no image or sound files).
+
+## Project idea
+
+You own a tiny café where the staff are cats. Every cat is a sticker-style drawing with its own name, fur,
+pattern and personality, and the personality changes the rules: a Diva gives double coins for pets but gets
+bored fast, a Gremlin earns more but knocks cups off the counter, a Sleepy cat naps half the day.
+You pet and feed the cats to keep them happy, because happy, well-fed cats earn more coins. With the coins you
+adopt more cats, buy upgrades, decorate the room and dress the cats up. Random café events (a food critic,
+zoomies, a rainy rush, a kitten at the door) keep every visit different, and the café keeps earning a little
+while you are away.
+
+## My exact prompt
+
+The app was made in a conversation with Claude. My first message (in Russian; only typos and punctuation were fixed):
+
+> Нам преподаватель сказала: «Create something fun in React». Например, одному парню она предложила сделать
+> что-то в стиле киберпанк в цветах Пикачу, а остальным — тоже придумать что-то необычное и весёлое.
+> Логику сайта тоже нужно придумать самим: любую, главное — весёлую. И ещё нужно сделать деплой.
+> Давай сделаем! У меня особо нет идей, но я хочу выполнить это задание. Может, что-то про кошек — я люблю
+> кошек. Или что-то другое, но по-настоящему весёлое и визуально красивое. Давай сделаем!
+
+Claude then asked three questions and I chose:
+
+- Concept: **Кошачье кафе-игра** (cat café game)
+- Visual style: **Пастельный kawaii** (pastel kawaii)
+- Folder name: **fun-project**
+
+English translation of the first message:
+
+> Our teacher told us: "Create something fun in React." For example, she suggested that one student make
+> something in a cyberpunk style with Pikachu colors, and asked the others to come up with something unusual
+> and fun too. We also have to invent the logic of the site ourselves: anything, as long as it is fun.
+> And it has to be deployed. Let's do it! I don't really have any ideas, but I want to complete this task.
+> Maybe something about cats — I love cats. Or something else, but really fun and visually beautiful. Let's do it!
 
 ## How to play
 

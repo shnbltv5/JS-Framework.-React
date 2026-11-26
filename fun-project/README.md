@@ -3,7 +3,7 @@
 A cozy idle game about running a café full of cats with big personalities.
 Made with React for the "create something fun" assignment.
 
-- **Play:** _add the Vercel link here_
+- **Play:** https://js-framework-react-ujz8.vercel.app
 - **Stack:** React 18, Redux Toolkit, React Router, Vite, plain CSS. All cats are drawn with SVG, all sounds are made with the Web Audio API (no image or sound files).
 
 ## How to play
